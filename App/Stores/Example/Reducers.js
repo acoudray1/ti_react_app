@@ -8,31 +8,31 @@ import { INITIAL_STATE } from './InitialState'
 import { createReducer } from 'reduxsauce'
 import { ExampleTypes } from './Actions'
 
-export const fetchUserLoading = (state) => ({
+export const fetchProjectLoading = (state) => ({
   ...state,
-  userIsLoading: true,
-  userErrorMessage: null,
+  projectIsLoading: true,
+  projectErrorMessage: null,
 })
 
-export const fetchUserSuccess = (state, { user }) => ({
+export const fetchProjectSuccess = (state, { project }) => ({
   ...state,
-  user: user,
-  userIsLoading: false,
-  userErrorMessage: null,
+  project: project,
+  projectIsLoading: false,
+  projectErrorMessage: null,
 })
 
-export const fetchUserFailure = (state, { errorMessage }) => ({
+export const fetchProjectFailure = (state, { errorMessage }) => ({
   ...state,
-  user: {},
-  userIsLoading: false,
-  userErrorMessage: errorMessage,
+  project: {},
+  projectIsLoading: false,
+  projectErrorMessage: errorMessage,
 })
 
 /**
  * @see https://github.com/infinitered/reduxsauce#createreducer
  */
 export const reducer = createReducer(INITIAL_STATE, {
-  [ExampleTypes.FETCH_USER_LOADING]: fetchUserLoading,
-  [ExampleTypes.FETCH_USER_SUCCESS]: fetchUserSuccess,
-  [ExampleTypes.FETCH_USER_FAILURE]: fetchUserFailure,
+  [ExampleTypes.FETCH_PROJECT_LOADING]: fetchProjectLoading,
+  [ExampleTypes.FETCH_PROJECT_SUCCESS]: fetchProjectSuccess,
+  [ExampleTypes.FETCH_PROJECT_FAILURE]: fetchProjectFailure,
 })

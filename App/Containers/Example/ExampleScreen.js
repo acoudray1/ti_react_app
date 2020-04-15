@@ -10,7 +10,7 @@ import { ApplicationStyles, Helpers, Images, Metrics } from 'App/Theme'
 /**
  * This is an example of a container component.
  *
- * This screen displays a little help message and informations about a fake user.
+ * This screen displays a little help message and informations about a fake project.
  * Feel free to remove it.
  */
 
@@ -21,7 +21,7 @@ const instructions = Platform.select({
 
 class ExampleScreen extends React.Component {
   componentDidMount() {
-    this._fetchUser()
+    this._fetchProject()
   }
 
   render() {
@@ -34,7 +34,7 @@ class ExampleScreen extends React.Component {
           Metrics.mediumVerticalMargin,
         ]}
       >
-        {this.props.userIsLoading ? (
+        {this.props.projectIsLoading ? (
           <ActivityIndicator size="large" color="#0000ff" />
         ) : (
           <View>
@@ -43,13 +43,13 @@ class ExampleScreen extends React.Component {
             </View>
             <Text style={Style.text}>To get started, edit App.js</Text>
             <Text style={Style.instructions}>{instructions}</Text>
-            {this.props.userErrorMessage ? (
-              <Text style={Style.error}>{this.props.userErrorMessage}</Text>
+            {this.props.projectErrorMessage ? (
+              <Text style={Style.error}>{this.props.projectErrorMessage}</Text>
             ) : (
               <View>
                 <Text style={Style.result}>
-                  {"I'm a fake user, my name is "}
-                  {this.props.user.name}
+                  {"I'm a fake project, my name is "}
+                  {this.props.project.title}
                 </Text>
                 <Text style={Style.result}>
                   {this.props.liveInEurope ? 'I live in Europe !' : "I don't live in Europe."}
@@ -58,7 +58,7 @@ class ExampleScreen extends React.Component {
             )}
             <Button
               style={ApplicationStyles.button}
-              onPress={() => this._fetchUser()}
+              onPress={() => this._fetchProject()}
               title="Refresh"
             />
           </View>
@@ -67,28 +67,28 @@ class ExampleScreen extends React.Component {
     )
   }
 
-  _fetchUser() {
-    this.props.fetchUser()
+  _fetchProject() {
+    this.props.fetchProject()
   }
 }
 
 ExampleScreen.propTypes = {
-  user: PropTypes.object,
-  userIsLoading: PropTypes.bool,
-  userErrorMessage: PropTypes.string,
-  fetchUser: PropTypes.func,
+  project: PropTypes.object,
+  projectIsLoading: PropTypes.bool,
+  projectErrorMessage: PropTypes.string,
+  fetchProject: PropTypes.func,
   liveInEurope: PropTypes.bool,
 }
 
 const mapStateToProps = (state) => ({
-  user: state.example.user,
-  userIsLoading: state.example.userIsLoading,
-  userErrorMessage: state.example.userErrorMessage,
+  project: state.example.project,
+  projectIsLoading: state.example.projectIsLoading,
+  projectErrorMessage: state.example.projectErrorMessage,
   liveInEurope: liveInEurope(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUser: () => dispatch(ExampleActions.fetchUser()),
+  fetchProject: () => dispatch(ExampleActions.fetchProject()),
 })
 
 export default connect(

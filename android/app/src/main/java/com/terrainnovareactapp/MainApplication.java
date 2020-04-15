@@ -1,4 +1,4 @@
-package com.terrainnovareactapp;
+package com.TerraInnovaReactApp;
 
 import android.app.Application;
 import android.content.Context;
